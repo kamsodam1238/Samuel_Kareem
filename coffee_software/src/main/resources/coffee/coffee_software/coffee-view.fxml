@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="body" stylesheets="@coffee.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coffee.coffee_software.CoffeeController">
+   <MenuButton fx:id="etype" alignment="CENTER" cache="true" graphicTextGap="10.0" layoutX="45.0" layoutY="35.0" mnemonicParsing="false" onAction="#actionetype" popupSide="RIGHT" prefHeight="43.0" prefWidth="220.0" text="Espresso Type">
+      <items>
+         <MenuItem mnemonicParsing="false" onAction="#actionetype" text="ESPRESSO" />
+         <MenuItem mnemonicParsing="false" onAction="#actionetype" text="LATTE" />
+         <MenuItem mnemonicParsing="false" onAction="#actionetype" text="AMERICANO" />
+         <MenuItem mnemonicParsing="false" onAction="#actionetype" text="CAPPUCCINO" />
+         <MenuItem mnemonicParsing="false" onAction="#actionetype" text="MACCHIATO" />
+         <MenuItem mnemonicParsing="false" onAction="#actionetype" text="FLAT WHITE" />
+         <MenuItem mnemonicParsing="false" onAction="#actionetype" text="DECAF" />
+      </items>
+      <font>
+         <Font size="20.0" />
+      </font>
+   </MenuButton>
+   <MenuButton fx:id="dsize" alignment="CENTER" layoutX="45.0" layoutY="121.0" mnemonicParsing="false" onAction="#actionsize" popupSide="RIGHT" prefHeight="43.0" prefWidth="220.0" text="Drink Size">
+      <items>
+         <MenuItem mnemonicParsing="false" onAction="#actionsize" text="SHORT" />
+         <MenuItem mnemonicParsing="false" onAction="#actionsize" text="TALL" />
+         <MenuItem mnemonicParsing="false" onAction="#actionsize" text="GRANDE" />
+         <MenuItem mnemonicParsing="false" onAction="#actionsize" text="VENTI" />
+      </items>
+      <font>
+         <Font size="20.0" />
+      </font>
+   </MenuButton>
+   <MenuButton fx:id="add" alignment="CENTER" layoutX="52.0" layoutY="208.0" mnemonicParsing="false" onAction="#actionadd" popupSide="RIGHT" prefHeight="43.0" prefWidth="220.0" text="Drink Additive">
+      <items>
+         <MenuItem mnemonicParsing="false" onAction="#actionadd" text="DAIRY" />
+         <MenuItem mnemonicParsing="false" onAction="#actionadd" text="ALMOND" />
+         <MenuItem mnemonicParsing="false" onAction="#actionadd" text="OAT" />
+         <MenuItem mnemonicParsing="false" onAction="#actionadd" text="VANILLA" />
+         <MenuItem mnemonicParsing="false" onAction="#actionadd" text="CARAMEL" />
+         <MenuItem mnemonicParsing="false" onAction="#actionadd" text="HAZELNUT" />
+      </items>
+      <font>
+         <Font size="20.0" />
+      </font>
+   </MenuButton>
+   <MenuButton fx:id="bshots" alignment="CENTER" layoutX="52.0" layoutY="294.0" mnemonicParsing="false" onAction="#actionbshots" popupSide="RIGHT" prefHeight="43.0" prefWidth="220.0" text="Brew Option">
+      <items>
+         <MenuItem mnemonicParsing="false" onAction="#actionbshots" text="SINGLE SHOT" />
+         <MenuItem mnemonicParsing="false" onAction="#actionbshots" text="DOUBLE SHOT" />
+         <MenuItem mnemonicParsing="false" onAction="#actionbshots" text="TRIPLE SHOT" />
+         <MenuItem mnemonicParsing="false" onAction="#actionbshots" text="QUAD SHOT" />
+      </items>
+      <font>
+         <Font size="20.0" />
+      </font>
+   </MenuButton>
+   <ImageView fx:id="coffee_image" fitHeight="213.0" fitWidth="253.0" layoutX="633.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <viewport>
+         <Rectangle2D />
+      </viewport></ImageView>
+   <ImageView fx:id="qrcode" fitHeight="150.0" fitWidth="151.0" layoutX="736.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@frame.png" />
+   </ImageView>
+   <Button fx:id="start" layoutX="21.0" layoutY="527.0" mnemonicParsing="false" onAction="#actionstart" prefHeight="51.0" prefWidth="106.0" text="START" />
+   <MenuButton fx:id="cust" alignment="CENTER" layoutX="401.0" layoutY="397.0" mnemonicParsing="false" onAction="#actioncustom" popupSide="TOP" prefHeight="43.0" prefWidth="199.0" text="CUSTOM" textAlignment="CENTER">
+      <items>
+         <CheckMenuItem mnemonicParsing="false" onAction="#actioncustom" text="DAIRY" />
+         <CheckMenuItem mnemonicParsing="false" onAction="#actioncustom" text="ALMOND" />
+         <CheckMenuItem mnemonicParsing="false" onAction="#actioncustom" text="OAT" />
+         <CheckMenuItem mnemonicParsing="false" onAction="#actioncustom" text="CINNAMON DOLCE" />
+         <CheckMenuItem mnemonicParsing="false" onAction="#actioncustom" text="EGGNOG" />
+         <CheckMenuItem mnemonicParsing="false" onAction="#actioncustom" text="PEPPERMINT" />
+         <CheckMenuItem mnemonicParsing="false" onAction="#actioncustom" text="PUMPKIN SPICE" />
+         <CheckMenuItem mnemonicParsing="false" onAction="#actioncustom" text="CARAMEL" />
+         <CheckMenuItem mnemonicParsing="false" onAction="#actioncustom" text="MOCHA" />
+         <CheckMenuItem mnemonicParsing="false" onAction="#actioncustom" text="WHITE CHOCOLATE MOCHA" />
+      </items>
+      <font>
+         <Font size="16.0" />
+      </font></MenuButton>
+   <TextField fx:id="tfield" layoutX="401.0" layoutY="456.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="127.0" prefWidth="199.0" />
+   <Button fx:id="pay" layoutX="769.0" layoutY="478.0" mnemonicParsing="false" onAction="#actionpay" prefHeight="35.0" prefWidth="106.0" text="PAY NOW" />
+   <Button fx:id="brew" layoutX="769.0" layoutY="527.0" mnemonicParsing="false" onAction="#actionbrew" prefHeight="51.0" prefWidth="106.0" text="BREW " />
+</AnchorPane>
