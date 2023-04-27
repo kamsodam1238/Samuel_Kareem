@@ -1,0 +1,17 @@
+title Use Case 4: Place Order Payment (System Sequence Diagram)
+
+Customer->Espresso Machine UI: Click Checkout Button
+Espresso Machine UI->Espresso Machine Drivers:Get Amount Due
+Espresso Machine Drivers->Espresso Machine UI:Amount Due
+Espresso Machine UI->Customer:Amount Due Message
+
+Customer->Payment Terminal:Enter Payment
+Payment Terminal  ->Payment Terminal:Process Payment
+
+alt Payment == Success
+Payment Terminal->Espresso Machine UI:Payment Successful
+Espresso Machine UI->Customer:Brew Now Message
+else Payment == Failed
+Payment Terminal->Espresso Machine UI:Payment Failed
+Espresso Machine UI->Customer:Error Try Again Message
+end

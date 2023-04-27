@@ -1,0 +1,10 @@
+title Maintenance Cleaning Interface
+
+Service-rep-> System: pressed cleaning button
+System -> Service-rep: display cleaning message and start cleaning
+System-> Service-rep: cleaning performed display message
+Service-rep -> System: pressed brew button for test coffee grind
+System -> Service-rep: display finish the test sucessfully
+
+
+

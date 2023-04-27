@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="ChampionsICS-370-Design">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/coffee_software/src/main/java" />
+    </SOURCES>
+  </library>
+</component>

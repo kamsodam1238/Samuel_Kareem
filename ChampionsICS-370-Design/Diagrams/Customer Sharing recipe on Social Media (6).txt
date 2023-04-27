@@ -1,0 +1,28 @@
+title Customer Sharing Recipe on Social Media
+
+
+EspressoMachine(UI)-> Customer: generate QR code
+Customer->EspressoMachine(UI): scan QR code on the espresso machine
+EspressoMachine(UI)-> Customer: QR code scanned sucessfully
+Customer->MobileApp: customer open the mobile app
+MobileApp -> Customer: prompts login page
+Customer->MobileApp: login with their credentials.
+MobileApp -> Customer: status
+alt status == valid
+
+MobileApp -> Customer: display a message share recipe and QR code
+MobileApp -> Customer: display share recipe page
+Customer -> MobileApp: share recipe 
+MobileApp -> SocialMedia:display shared recipe 
+SocialMedia -> MobileApp:display a message "shared recipe posted"
+MobileApp -> Customer: display a message recipe shared
+
+else status == invalid
+MobileApp->Customer: failure message 
+end
+
+
+
+
+
+

@@ -1,0 +1,28 @@
+title Maintenance Menu 
+
+Service-rep->EspressoMachineDrivers: selects maintenace Menu
+EspressoMachineDrivers -> Service-rep: prompt security pin
+Service-rep-> EspressoMachineDrivers : enters secuity pin
+
+EspressoMachineDrivers -> EspressoMachine(UI): pin status
+EspressoMachine(UI)  -> Service-rep: status
+
+alt status == valid
+
+EspressoMachine(UI) -> Service-rep: display maintenance menu
+Service-rep  -> EspressoMachine(UI): selects cleaning 
+
+EspressoMachine(UI) -> EspressoMachineDrivers : start cleaning
+EspressoMachineDrivers -> Service-rep: start cleaning message
+EspressoMachine(UI) -> EspressoMachineDrivers : cleaning is complete
+
+EspressoMachineDrivers  -> Service-rep : cleaning performed message
+EspressoMachine(UI)  -> Service-rep : display Coffee Menu 
+Service-rep -> EspressoMachine(UI): pressed brew button for test coffee grind
+EspressoMachine(UI)-> Service-rep: brewing
+EspressoMachine(UI) -> Service-rep: display coffee is ready message
+
+else status == invalid
+EspressoMachineDrivers ->Service-rep: failure message 
+end
+

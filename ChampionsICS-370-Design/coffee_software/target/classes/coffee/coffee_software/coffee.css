@@ -1,0 +1,15 @@
+.body{
+-fx-background-image: url("background.png");
+}
+.main{
+-fx-background-image: url("main_background.png");
+}
+.prompt-container {
+    -fx-font-size: 20px;
+    -fx-text-alignment: center;
+}
+.font{
+    -fx-font-size: 20px;
+}
+
+

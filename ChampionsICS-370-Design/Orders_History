@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<orders>
+    <espressoVariety id="1">
+        <name>LATTE</name>
+        <additives>ALMOND</additives>
+        <sizes>SHORT</sizes>
+        <brewOptions>DOUBLE SHOT</brewOptions>
+    </espressoVariety>
+</orders>

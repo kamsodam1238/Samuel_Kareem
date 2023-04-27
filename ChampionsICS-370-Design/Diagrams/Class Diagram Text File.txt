@@ -1,0 +1,97 @@
+@startuml
+class Customer {
+-name: String
+-customerId: int
+-List<Order> orderHistory
+-savedPayMethod: String
+
+<<constructor>> Customer(String, id)
++addOrder(Order)
+}
+
+class Order{
+-orderId: int
+-amountDue: double
+-date: Date
+-beverage: Beverage
+
+<<constructor>>Order()
+}
+
+class EspressoMachine{
+-machineId: String
+-location: String
+-maintenanceDate: String
+-beverageCounter: int
+
++brew(Beverage)
+-backFlush()
+-testGrind()
+-scheduleMaintenance(String)
+-errorLog()
+}
+
+class ServiceRep{
+-repName: String
+-repId: String
+
++maintenance(machineId:String, location:String, Date, String:message)
+}
+
+class SharedRecipe{
+-date: Date
+-Recipe: Beverage
+
++generateQr(Beverage)
+}
+
+class Payment{
+-paymentId: String
+-amount: double
+-payMethod: String
+-date: String
+-status: String
+
+<<constructor>> Payment(double)
++complete()
++cancel()
+}
+
+class Beverage{
+-type: BeverageType
+-additive: drinkAdd
+-size: drinkSize
+-brewOption: BrewOpt
+-List<customAdds> custom
+
+<<constructor>> Beverage()
++addOption(customAdds)
+}
+
+class PriceManager{
+-type: HashMap 
+-additive: HashMap 
+-size: HashMap 
+-brew: HashMap 
+-custom: HashMap
+
+<<constructor>> PriceManager()
++initialize()
++find()
++calculateTotal(Beverage)
+}
+
+
+Customer "*" -right- "*" Order: places
+Customer "1..*" -down- "*" SharedRecipe
+Customer "1..*" -up- "*" Payment: makes
+EspressoMachine "1..*" -d- "1..*" ServiceRep: maintains
+
+Payment "*" --* "1..*" Order: fulfills
+Order "1..*" *-down- "*" Beverage: has
+EspressoMachine "1..*" -- "*" Beverage: makes
+EspressoMachine "*" -- "*" Order
+
+SharedRecipe "1" -right- "1" Beverage
+PriceManager "*" -- "*" Order
+@enduml

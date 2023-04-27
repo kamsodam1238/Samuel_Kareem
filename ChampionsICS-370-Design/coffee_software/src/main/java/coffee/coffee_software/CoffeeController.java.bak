@@ -1,0 +1,309 @@
+package coffee.coffee_software;
+
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import java.io.*;
+import java.net.URL;
+import java.util.Objects;
+import java.util.ResourceBundle;
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class CoffeeController implements Initializable {
+    @FXML
+    private Button clearbox;
+    @FXML
+    private Button pay;
+    @FXML
+    private Button brew;
+    @FXML
+    private TextArea tfield;
+    @FXML
+    private AnchorPane apane;
+    @FXML
+    private Button start;
+    @FXML
+    private ComboBox<customAdds> cust;
+    @FXML
+    private ComboBox<drinkSize> dsize;
+    @FXML
+    private ComboBox<drinkAdd> add;
+    @FXML
+    private ComboBox<brewOpt> bshots;
+    @FXML
+    private ImageView qrcode;
+    @FXML
+    private ImageView coffee_image;
+    @FXML
+    private ComboBox<BeverageType> etype;
+
+    static AtomicInteger incre = new AtomicInteger();
+
+
+    public CoffeeController() throws ParserConfigurationException, FileNotFoundException {
+    }
+    File xmlrecord = new File("coffee_software/Orders_History/history.xml");
+    FileOutputStream outputStream = new FileOutputStream(xmlrecord);
+    // xml
+    DocumentBuilderFactory docFact = DocumentBuilderFactory.newInstance();
+    DocumentBuilder documentBuilder = docFact.newDocumentBuilder();
+
+    /// root elements
+    Document doc = documentBuilder.newDocument();
+    Element rootElement = (Element) doc.appendChild(doc.createElement("orders"));
+
+
+
+    // Espresso variety combo box button action
+    public void actionetype() {
+        etype.getSelectionModel().getSelectedItem();
+        add.setVisible(true);
+        cust.setVisible(true);
+        tfield.setVisible(true);
+        clearbox.setVisible(true);
+
+        // Selection validation action
+        if(String.valueOf(etype.getSelectionModel().getSelectedItem()).equalsIgnoreCase("Select Coffee Variety")){
+            add.setVisible(false);
+            add.getSelectionModel().select(0);
+            dsize.setVisible(false);
+            dsize.getSelectionModel().select(0);
+            bshots.setVisible(false);
+            bshots.getSelectionModel().select(0);
+            coffee_image.setVisible(false);
+        }
+        else if(String.valueOf(etype.getSelectionModel().getSelectedItem()).equalsIgnoreCase("espresso")){
+            Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/esp.png")));
+            coffee_image.setVisible(true);
+            coffee_image.setImage(image);
+        } else if (String.valueOf(etype.getSelectionModel().getSelectedItem()).equalsIgnoreCase("latte")) {
+            coffee_image.setVisible(true);
+            Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/lat.png")));
+            coffee_image.setImage(image);
+        }else if (String.valueOf(etype.getSelectionModel().getSelectedItem()).equalsIgnoreCase("americano")) {
+            coffee_image.setVisible(true);
+            Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/ame.png")));
+            coffee_image.setImage(image);
+        }else if (String.valueOf(etype.getSelectionModel().getSelectedItem()).equalsIgnoreCase("cappuccino")) {
+            Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/cap.png")));
+            coffee_image.setVisible(true);
+            coffee_image.setImage(image);
+        }else if (String.valueOf(etype.getSelectionModel().getSelectedItem()).equalsIgnoreCase("macchiato")) {
+            coffee_image.setVisible(true);
+            Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/mac.jpg")));
+            coffee_image.setImage(image);
+        }else if (String.valueOf(etype.getSelectionModel().getSelectedItem()).equalsIgnoreCase("flat white")) {
+            coffee_image.setVisible(true);
+            Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/flt.png")));
+            coffee_image.setImage(image);
+        }else if (String.valueOf(etype.getSelectionModel().getSelectedItem()).equalsIgnoreCase("decaf")) {
+            coffee_image.setVisible(true);
+            Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/dec.png")));
+            coffee_image.setImage(image);
+        }
+    }
+
+    // Drink additives combo box button action
+    public void actionadd() {
+        add.getSelectionModel().getSelectedItem();
+        dsize.setVisible(true);
+        tfield.appendText(add.getSelectionModel().getSelectedItem() + "\n");
+
+        //Menu selection validation action
+        if(String.valueOf(add.getSelectionModel().getSelectedItem()).equalsIgnoreCase("Add Drink Additives")){
+            tfield.undo();
+            dsize.setVisible(false);
+            dsize.getSelectionModel().selectFirst();
+            bshots.setVisible(false);
+            bshots.getSelectionModel().selectFirst();
+
+        }
+    }
+
+    // Drink size combo box button action
+    public void actionsize() {
+        dsize.getSelectionModel().getSelectedItem();
+        bshots.setVisible(true);
+
+        // Selection validation action
+        if(String.valueOf(dsize.getSelectionModel().getSelectedItem()).equalsIgnoreCase("Select Drink Size")){
+            bshots.setVisible(false);
+            bshots.getSelectionModel().selectFirst();
+        }
+    }
+
+    // Brew option combo box button action
+    public void actionbshots() {
+        bshots.getSelectionModel().getSelectedItem();
+        brew.setVisible(false);
+        pay.setVisible(true);
+        qrcode.setVisible(false);
+
+        // Selection validation action
+        if(String.valueOf(bshots.getSelectionModel().getSelectedItem()).equalsIgnoreCase("Select Brew Option")){
+            qrcode.setVisible(false);
+
+        }
+    }
+
+    // Start button action
+    public void actionstart()  {
+        start.setVisible(false);
+        apane.setVisible(true);
+        pay.setVisible(false);
+
+    }
+
+    // Custom Menu combo box
+    public void actioncustom() {
+        tfield.appendText(cust.getSelectionModel().getSelectedItem() + "\n");
+    }
+
+    // Pay Now button action
+    public void actionpay() {
+        if (String.valueOf(etype.getSelectionModel().getSelectedItem()).equalsIgnoreCase("Select Coffee Variety") || String.valueOf(add.getSelectionModel().getSelectedItem()).equalsIgnoreCase("Add Drink Additives") ||
+                String.valueOf(dsize.getSelectionModel().getSelectedItem()).equalsIgnoreCase("Select Drink Size") || String.valueOf(bshots.getSelectionModel().getSelectedItem()).equalsIgnoreCase("Select Brew Option")) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Payment");
+            alert.setHeaderText("WARNING:");
+            alert.setContentText("UNSELECTED FIELD DETECTED");
+            alert.showAndWait();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Payment");
+            alert.setHeaderText("Results:");
+            alert.setContentText("Payment is Successful!!!\n\nBegin Brewing");
+            alert.showAndWait();
+            System.out.println(alert.getButtonTypes());
+            pay.setVisible(false);
+            brew.setVisible(true);
+
+        }
+    }
+
+    // Brew Now button action
+    public void actionbrew() throws ParserConfigurationException, TransformerException {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Brew");
+        alert.setHeaderText("Results:");
+        alert.setContentText("Begin will start shortly....");
+        alert.showAndWait();
+        qrcode.setVisible(true);
+
+
+        if (pay.isVisible() == (false)){
+            // Create all element to be present in the file
+            // Add Coffee Variety element
+            Element CoffeeVariety = doc.createElement("espressoVariety");
+            rootElement.appendChild(CoffeeVariety);
+            CoffeeVariety.setAttribute("id", String.valueOf(incre.incrementAndGet()));
+
+            // Espresso Variety
+            Element estype = doc.createElement("name");
+            estype.setTextContent(String.valueOf(etype.getSelectionModel().getSelectedItem()));
+            CoffeeVariety.appendChild(estype);
+            // Additives
+            Element eadds = doc.createElement("additives");
+            eadds.setTextContent(String.valueOf(add.getSelectionModel().getSelectedItem()));
+            CoffeeVariety.appendChild(eadds);
+
+            // Sizes
+            Element esizes = doc.createElement("sizes");
+            esizes.setTextContent(String.valueOf(dsize.getSelectionModel().getSelectedItem()));
+            CoffeeVariety.appendChild(esizes);
+
+            // Brew Options
+            Element eoptions = doc.createElement("brewOptions");
+            eoptions.setTextContent(String.valueOf(bshots.getSelectionModel().getSelectedItem()));
+            CoffeeVariety.appendChild(eoptions);
+            writeXml(doc, outputStream);
+        }
+
+
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Populate the combo box with data hardcoded from their respective enum classes
+        etype.getItems().addAll(BeverageType.values());
+        add.getItems().addAll(drinkAdd.values());
+        dsize.getItems().addAll(drinkSize.values());
+        bshots.getItems().addAll(brewOpt.values());
+        cust.getItems().addAll(customAdds.values());
+
+//      Select the first index as the selected default displayed text
+        etype.getSelectionModel().select(0);
+        add.getSelectionModel().select(0);
+        dsize.getSelectionModel().select(0);
+        bshots.getSelectionModel().select(0);
+        cust.getSelectionModel().select(0);
+
+    }
+
+    // Reset Button Action
+    public void actionclear() {
+        etype.getSelectionModel().select(0);
+        add.setVisible(false);
+        add.getSelectionModel().select(0);
+        dsize.setVisible(false);
+        dsize.getSelectionModel().select(0);
+        bshots.setVisible(false);
+        bshots.getSelectionModel().select(0);
+
+        clearbox.setVisible(false);
+        cust.getSelectionModel().select(0);
+        cust.setVisible(false);
+        tfield.clear();
+        tfield.setVisible(false);
+        coffee_image.setVisible(false);
+        qrcode.setVisible(false);
+        brew.setVisible(false);
+        pay.setVisible(false);
+
+    }
+
+    // Text field clear button action
+    public void actionddeletselection() {
+        cust.getSelectionModel().select(0);
+        tfield.clear();
+
+    }
+
+
+    // write doc to output stream
+    private static void writeXml(Documnet doc,
+                                 OutputStream output)
+            throws TransformerException {
+
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = transformerFactory.newTransformer();
+        // pretty print XML
+        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+
+        DOMSource source = new DOMSource(doc);
+        StreamResult result = new StreamResult(output);
+
+        transformer.transform(source, result);
+
+    }
+
+
+}

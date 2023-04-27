@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" styleClass="main" stylesheets="@coffee.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coffee.coffee_software.CoffeeController">
+   <AnchorPane fx:id="apane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" styleClass="body" stylesheets="@coffee.css" visible="false">
+      <MenuButton fx:id="etype" alignment="CENTER" cache="true" graphicTextGap="10.0" layoutX="95.0" layoutY="51.0" mnemonicParsing="false" onAction="#actionetype" popupSide="RIGHT" prefHeight="43.0" prefWidth="300.0" text="Select Espresso Variety">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#actionetype" text="Select Espresso Variety" />
+            <MenuItem mnemonicParsing="false" onAction="#actionetype" text="ESPRESSO" />
+            <MenuItem mnemonicParsing="false" onAction="#actionetype" text="LATTE" />
+            <MenuItem mnemonicParsing="false" onAction="#actionetype" text="AMERICANO" />
+            <MenuItem mnemonicParsing="false" onAction="#actionetype" text="CAPPUCCINO" />
+            <MenuItem mnemonicParsing="false" onAction="#actionetype" text="MACCHIATO" />
+            <MenuItem mnemonicParsing="false" onAction="#actionetype" text="FLAT WHITE" />
+            <MenuItem mnemonicParsing="false" onAction="#actionetype" text="DECAF" />
+         </items>
+         <font>
+            <Font size="20.0" />
+         </font>
+      </MenuButton>
+      <MenuButton fx:id="add" alignment="CENTER" layoutX="95.0" layoutY="177.0" mnemonicParsing="false" onAction="#actionadd" popupSide="RIGHT" prefHeight="43.0" prefWidth="300.0" text="Add Drink Additive" visible="false">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#actionadd" text="Add Drink Additive" />
+            <MenuItem mnemonicParsing="false" onAction="#actionadd" text="MILK" />
+            <MenuItem mnemonicParsing="false" onAction="#actionadd" text="ALMOND" />
+            <MenuItem mnemonicParsing="false" onAction="#actionadd" text="OAT" />
+            <MenuItem mnemonicParsing="false" onAction="#actionadd" text="VANILLA" />
+            <MenuItem mnemonicParsing="false" onAction="#actionadd" text="CARAMEL" />
+            <MenuItem mnemonicParsing="false" onAction="#actionadd" text="HAZELNUT" />
+         </items>
+         <font>
+            <Font size="20.0" />
+         </font>
+      </MenuButton>
+      <MenuButton fx:id="dsize" alignment="CENTER" layoutX="95.0" layoutY="320.0" mnemonicParsing="false" onAction="#actionsize" popupSide="RIGHT" prefHeight="43.0" prefWidth="300.0" text="Select Drink Size" visible="false">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#actionsize" text="Select Drink Size" />
+            <MenuItem mnemonicParsing="false" onAction="#actionsize" text="SHORT" />
+            <MenuItem mnemonicParsing="false" onAction="#actionsize" text="TALL" />
+            <MenuItem mnemonicParsing="false" onAction="#actionsize" text="GRANDE" />
+            <MenuItem mnemonicParsing="false" onAction="#actionsize" text="VENTI" />
+         </items>
+         <font>
+            <Font size="20.0" />
+         </font>
+      </MenuButton>
+      <MenuButton fx:id="bshots" alignment="CENTER" contentDisplay="BOTTOM" layoutX="95.0" layoutY="456.0" mnemonicParsing="false" onAction="#actionbshots" prefHeight="43.0" prefWidth="300.0" text="Select Brew Option" visible="false">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#actionbshots" text="Select Brew Option" />
+            <MenuItem mnemonicParsing="false" onAction="#actionbshots" text="SINGLE SHOT" />
+            <MenuItem mnemonicParsing="false" onAction="#actionbshots" text="DOUBLE SHOT" />
+            <MenuItem mnemonicParsing="false" onAction="#actionbshots" text="TRIPLE SHOT" />
+            <MenuItem mnemonicParsing="false" onAction="#actionbshots" text="QUAD SHOT" />
+         </items>
+         <font>
+            <Font size="20.0" />
+         </font>
+      </MenuButton>
+      <ImageView fx:id="coffee_image" fitHeight="313.0" fitWidth="338.0" layoutX="913.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <viewport>
+            <Rectangle2D />
+         </viewport>
+      </ImageView>
+      <ImageView fx:id="qrcode" fitHeight="197.0" fitWidth="186.0" layoutX="1065.0" layoutY="419.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <Image url="@frame.png" />
+      </ImageView>
+      <Button fx:id="pay" layoutX="1080.0" layoutY="653.0" mnemonicParsing="false" onAction="#actionpay" prefHeight="64.0" prefWidth="171.0" text="PAY NOW" />
+      <Button fx:id="brew" layoutX="1080.0" layoutY="653.0" mnemonicParsing="false" onAction="#actionbrew" prefHeight="64.0" prefWidth="171.0" text="BREW " visible="false" />
+      <ComboBox fx:id="cust" layoutX="551.0" layoutY="563.0" onAction="#actioncustom" prefHeight="26.0" prefWidth="194.0" promptText="CUSTOM MENU" visible="false"/>
+      <TextArea fx:id="tfield" editable="false" layoutX="551.0" layoutY="620.0" prefHeight="147.0" prefWidth="276.0" visible="false" />
+      <Button fx:id="reset" layoutX="38.0" layoutY="673.0" mnemonicParsing="false" onAction="#actionclear" prefHeight="51.0" prefWidth="83.0" text="Reset">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="clearbox" layoutX="763.0" layoutY="563.0" mnemonicParsing="false" onAction="#actionddeletselection" prefHeight="26.0" prefWidth="62.0" text="Clear" visible="false"/>
+   </AnchorPane>
+   <Button fx:id="start" layoutX="640.0" layoutY="400.0" mnemonicParsing="false" onAction="#actionstart" prefHeight="51.0" prefWidth="106.0" text="START" visible="true" />
+</Pane>

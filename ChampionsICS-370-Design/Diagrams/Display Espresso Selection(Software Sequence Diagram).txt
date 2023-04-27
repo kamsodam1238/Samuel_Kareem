@@ -1,0 +1,9 @@
+title Display Espresso Selection 
+
+UI->MenuManager:Start()
+UI->MenuManager:getMenuList(beverage)
+MenuManager-->UI:result - dipslayMenu()
+UI->MenuManager:setMenuSelection(number)
+MenuManager->ImageManager:getImage(number)
+ImageManager-->UI:result - display beverage image
+MenuManager->SelectionManager:storeMenuSelection(number)

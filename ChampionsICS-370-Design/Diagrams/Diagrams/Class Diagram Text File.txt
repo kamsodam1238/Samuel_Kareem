@@ -1,0 +1,101 @@
+@startuml
+class Customer {
+-name: String
+-customerId: String
+-address: String
+-List<Order> orderHistory
+
+<<constructor>> Customer(String, id)
+}
+
+class Order{
+-orderId: String
+-amountDue: double
+-date: Date
+-beverage: Beverage
+
+<<constructor>>Order(Beverage, additive:String, size:String, brewOption:String)
++addOptions(List<String>)
++calculateTotal()
+}
+
+class EspressoMachine{
+-machineId: String
+-location: String
+-maintenanceDate: String
+-beverageCounter: int
+
++brew()
+-backFlush()
+-testGrind()
+-scheduleMaintenance(String)
+-errorLog()
+}
+
+class ServiceRep{
+-publicName: String
+-repId: String
+
++maintenance(machineId, location)
+}
+
+class SharedRecipe{
+-date: Date
+-Recipe: Beverage
+
++generateQr(Beverage)
+}
+
+class Payment{
+-amount: double
+-payMethod: String
+-date: String
+-status: String
+
+<<constructor>> Payment(double)
+getPaymentInfo()
+-complete()
+-cancel()
+}
+
+class Beverage{
+-type: String
+-size: String
+-List<String> additives
+-brewOption: String
+
+<<constructor>> Beverage()
++add(String)
+}
+
+class MenuManager{
+-List<String> beverageOptions
+-List<String> additiveOptions
+-List<String> brewOptions
+
++getMenuList(beverage)
++displayMenu()
+}
+
+class SelectionManager{
+-selection: int
+
++storeMenuSelection(int)
+}
+
+
+Customer "*" -right- "*" Order: places
+Customer "1..*" -down- "*" SharedRecipe
+Customer "1..*" -up- "*" Payment: makes
+EspressoMachine "1..*" -right- "1..*" ServiceRep: maintains
+
+Beverage"*" -down- "1" MenuManager
+Payment "*" --* "1..*" Order: fulfills
+Order "1..*" *-down- "*" Beverage: has
+MenuManager "1" -right- "1" EspressoMachine
+SelectionManager "1" -left- "*" Beverage
+SelectionManager "1" -- "1" EspressoMachine
+EspressoMachine "1..*" -- "*" Beverage: makes
+
+SharedRecipe "1" -right- "1" Beverage
+@enduml

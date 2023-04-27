@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" styleClass="main" stylesheets="@coffee.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="coffee.coffee_software.CoffeeController" visible="true">
+   <AnchorPane fx:id="parentpane">
+      <Button fx:id="start" alignment="CENTER" layoutX="440.0" layoutY="500.0" mnemonicParsing="false" onAction="#actionstart" prefHeight="110.0" prefWidth="400.0" stylesheets="@coffee.css" text="START" textAlignment="CENTER">
+         <font>
+            <Font size="52.0" />
+         </font>
+      </Button>
+      <Button fx:id="maintain" alignment="CENTER" layoutX="440.0" layoutY="200.0" mnemonicParsing="false" onAction="#actionmaintenance" prefHeight="100.0" prefWidth="400.0" text="MAINTENANCE" textFill="#050505">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Button>
+   </AnchorPane>
+   <AnchorPane fx:id="apane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" styleClass="body" stylesheets="@coffee.css" visible="false">
+      <ComboBox fx:id="etype" cache="true" layoutX="95.0" layoutY="51.0" onAction="#actionetype" prefHeight="43.0" prefWidth="300.0" promptText="Select Coffee Variety" styleClass="prompt-container">
+
+
+         </ComboBox>
+      <ComboBox fx:id="add" layoutX="95.0" layoutY="177.0" onAction="#actionadd" prefHeight="43.0" prefWidth="300.0" promptText="Add Drink Additive" styleClass="prompt-container" stylesheets="@coffee.css" visible="false">
+
+         </ComboBox>
+      <ComboBox fx:id="dsize" layoutX="95.0" layoutY="320.0" onAction="#actionsize" prefHeight="43.0" prefWidth="300.0" promptText="Select Drink Size" styleClass="prompt-container" stylesheets="@coffee.css" visible="false">
+         </ComboBox>
+      <ComboBox fx:id="bshots" layoutX="95.0" layoutY="456.0" onAction="#actionbshots" prefHeight="43.0" prefWidth="300.0" promptText="Select Brew Option" styleClass="prompt-container" stylesheets="@coffee.css" visible="false">
+         </ComboBox>
+      <ImageView fx:id="coffee_image" fitHeight="313.0" fitWidth="338.0" layoutX="913.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <viewport>
+            <Rectangle2D />
+         </viewport>
+      </ImageView>
+      <ImageView fx:id="qrcode" fitHeight="197.0" fitWidth="186.0" layoutX="1065.0" layoutY="419.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <Image url="@frame.png" />
+      </ImageView>
+      <Button fx:id="pay" layoutX="1080.0" layoutY="653.0" mnemonicParsing="false" onAction="#actionpay" prefHeight="64.0" prefWidth="171.0" styleClass="font" stylesheets="@coffee.css" text="PAY NOW" />
+      <Button fx:id="brew" layoutX="1080.0" layoutY="653.0" mnemonicParsing="false" onAction="#actionbrew" prefHeight="64.0" prefWidth="171.0" styleClass="font" stylesheets="@coffee.css" text="BREW " visible="false" />
+      <ComboBox fx:id="cust" layoutX="551.0" layoutY="563.0" onAction="#actioncustom" prefHeight="26.0" prefWidth="194.0" promptText="CUSTOM MENU" visible="false" />
+      <TextArea fx:id="tfield" editable="false" layoutX="551.0" layoutY="620.0" prefHeight="147.0" prefWidth="276.0" visible="false" />
+      <Button layoutX="38.0" layoutY="700.0" mnemonicParsing="false" onAction="#actionclear" prefHeight="51.0" prefWidth="83.0" text="Reset">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="clearbox" layoutX="763.0" layoutY="563.0" mnemonicParsing="false" onAction="#actionddeletselection" prefHeight="26.0" prefWidth="62.0" text="Clear" visible="false" />
+   </AnchorPane>
+   <AnchorPane fx:id="maintainpane" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: white;" visible="false">
+      <Button alignment="CENTER" layoutX="529.0" layoutY="192.0" mnemonicParsing="false" text="CLEAN CYCLE">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Button alignment="CENTER" layoutX="529.0" layoutY="344.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="222.0" text="TEST BREW">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Button fx:id="exit" layoutX="592.0" layoutY="507.0" mnemonicParsing="false" onAction="#actionexit" text="EXIT">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+   </AnchorPane>
+   <AnchorPane fx:id="pinpane" layoutX="420.0" layoutY="200.0" prefHeight="422.0" prefWidth="500.0" style="-fx-background-color: white;" visible="false">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="130.0" layoutY="125.0" prefHeight="30.0" prefWidth="240.0" text="ENTER SECURITY PIN">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="90.0" fitWidth="120.0" layoutX="195.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../../img/lock.png" />
+      </ImageView>
+      <PasswordField fx:id="pin" layoutX="157.0" layoutY="211.0" prefHeight="26.0" prefWidth="186.0" />
+      <Button layoutX="379.0" layoutY="334.0" mnemonicParsing="false" onAction="#actionexit" prefHeight="43.0" prefWidth="90.0" text="CANCEL" />
+      <Button layoutX="224.0" layoutY="270.0" mnemonicParsing="false" onAction="#actionpin" onKeyPressed="#actionpin" prefHeight="43.0" prefWidth="76.0" text="LOGIN">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Label fx:id="labels" layoutX="38.0" layoutY="369.0" prefHeight="18.0" prefWidth="128.0" />
+   </AnchorPane>
+</Pane>

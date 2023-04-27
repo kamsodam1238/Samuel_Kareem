@@ -1,0 +1,14 @@
+title Make Espresso Drink Selection
+
+Customer->Espresso Machine UI: Select Start to begin
+Espresso Machine UI->Customer: Display Beverage Items
+Customer-> Espresso Machine UI : Select Beverage Item
+Espresso Machine UI-> Images: request Beverage Images
+Images ->Espresso Machine UI : Display Beverage Images
+Espresso Machine UI -> Customer : Display Drink Size Options (Short, Tall, Grande, Venti)
+Customer -> Espresso Machine UI : Selects Drink Size
+Espresso Machine UI -> Customer : Display additve options (Milk,Vanilla, etc.)
+Customer -> Espresso Machine UI: User selects drink aditive option
+Espresso Machine UI -> Customer: Display brew options (single,dubble,triple,quad)
+Customer -> Espresso Machine UI: User selects brew option
+Espresso Machine UI -> Customer: Display "Brew Now" Button

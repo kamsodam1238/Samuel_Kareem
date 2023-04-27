@@ -1,0 +1,7 @@
+.body{
+-fx-background-image: url("background.png")
+}
+.main{
+-fx-background-image: url("main_background.png");
+}
+

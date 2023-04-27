@@ -1,0 +1,102 @@
+<?xml version = "1.0"?>
+
+<CustomerOrderHistory>
+
+<OrderHistory>
+	<Defaultmenu>Regular Menu</Defaultmenu>
+	<beverage> Espresso Shot </beverage>
+	<size> short </size>
+	<Flavors> orginal </Flavors>
+	<Price> $3.00 </Price>
+	<status> sucess </status>
+</OrderHistory> 
+
+
+<OrderHistory>
+    <Defaultmenu>Regular Menu</Defaultmenu>
+	<beverage>Cappuccino </beverage>
+	<size> medium </size>
+	<Flavors> vanilla  </Flavors>
+	<Price> $5.00 </Price>
+	<status> </status>
+	
+</OrderHistory>
+
+
+
+<OrderHistory>
+	<Defaultmenu>Regular Menu</Defaultmenu>
+	<beverage> Macchiato </beverage>
+	<size> medium </size>
+	<Flavors> vanilla </Flavors>
+	<Price> $4.50 </Price>
+	<status> sucess </status>
+</OrderHistory>
+
+
+
+
+<OrderHistory>
+	<Defaultmenu>Regular Menu</Defaultmenu>
+	<beverage> Americano </beverage>
+	<size> medium </size>
+	<Flavors> orginal </Flavors>
+	<Price> $4.00 </Price>
+	<status> sucess </status>
+</OrderHistory>
+
+
+<OrderHistory>
+	<Defaultmenu>Regular Menu</Defaultmenu>
+	<beverage> Flat white </beverage>
+	<size> small </size>
+	<Flavors> caramel </Flavors>
+	<Price> $4.00 </Price>
+	<status> </status>
+	</OrderHistory>
+
+<OrderHistory>
+	<Defaultmenu>Regular Menu</Defaultmenu>
+	<beverage> Decafe </beverage>
+	<size> large </size>
+	<Flavors> milk  </Flavors>
+	<status> sucess </status>
+</OrderHistory>
+
+
+<OrderHistory>
+	<Sharedrecepie>Custom Menu</Sharedrecepie>
+	<beverage> Latte  </beverage>
+	<size> small </size>
+	<Flavors> cinnmon dolce  </Flavors>
+	<Price> $3.00 </Price>
+	<status> sucess </status>
+</OrderHistory>
+
+
+<OrderHistory>
+	<Sharedrecepie>Custom Menu</Sharedrecepie>
+	<beverage> Mocha  </beverage>
+	<size> Medium </size>
+	<Flavors> peppermint  </Flavors>
+	<Price> $5.00 </Price>
+	<status> sucess </status>
+</OrderHistory>
+
+
+<OrderHistory>
+	<Sharedrecepie>Custom Menu</Sharedrecepie>
+	<beverage> White Mocha  </beverage>
+	<size> Medium </size>
+	<Flavors> hazelnut </Flavors>
+	<Price> $5.00 </Price>
+	<status> sucess </status>
+</OrderHistory>
+
+
+
+
+
+
+
+</CustomerOrderHistory>

@@ -1,0 +1,43 @@
+title Display Espresso Menu
+
+UI->Beverage:Start()
+Beverage->*ItemListObject:getItemList()
+ItemListObject-->Beverage:result
+destroy ItemListObject
+Beverage->UI:display list
+
+title Display Item Menu
+
+UI->Item:Start()
+Item->*ItemListObject:getItemList(beverage)
+ItemListObject-->Item:result
+destroy ItemListObject
+Item->UI:display list
+
+
+
+title Display Drink Size Menu
+
+UI->DrinkSize:Start()
+DrinkSize->*ItemListObject:getItemList()
+ItemListObject-->DrinkSize:result
+destroy ItemListObject
+DrinkSize->UI:display list
+
+title Display Drink Additive Menu
+
+UI->DrinkAdditive:Start()
+DrinkAdditive->*ItemListObject:getItemList()
+ItemListObject-->DrinkAdditive:result
+destroy ItemListObject
+DrinkAdditive->UI:display list
+
+title Display Brew Options Menu
+
+UI->BrewOption:Start()
+BrewOption->*ItemListObject:getItemList()
+ItemListObject-->BrewOption:result
+destroy ItemListObject
+BrewOption->UI:display list
+
+www.websequencediagrams.com

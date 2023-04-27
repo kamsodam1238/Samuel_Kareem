@@ -1,0 +1,16 @@
+title Use Case 4: Place Payment Order (Software Sequence Diagram)
+
+UI->Transaction:checkout()
+Transaction->Beverage:getPrice(beverageType)
+Beverage-->Transaction:price
+Transaction-->UI:amountDue
+UI->Transaction:getPaymentOptions()
+Transaction-->UI:paymentOptions
+UI->Transaction:makePayment(selectedOption)
+Transaction->Transaction:validatePayment()
+
+alt validatePayment() == true
+Transaction->UI:Display Brew Now Message
+else validatePayment() == false
+Transaction->UI:Display Error Try Again Message
+end

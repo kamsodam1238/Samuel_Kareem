@@ -1,0 +1,42 @@
+title System Sequence Diagram Access Cleaning Maintenance 
+
+Service-rep-> MobileApp: pressed maintenance virtual button
+MobileApp-> Service-rep: prompt security pin
+Service-rep-> MobileApp: enters secuity pin
+MobileApp -> EspressoMachineDrivers  : security pin
+EspressoMachineDrivers  -> MobileApp: status
+
+alt status == valid
+EspressoMachineDrivers -> MobileApp: display maintenance menu
+MobileApp  -> Service-rep: Maintenace menu display
+Service-rep-> MobileApp : pressed virtual cleaning button
+MobileApp -> EspressoMachineDrivers  : cleaning button pressed
+EspressoMachineDrivers ->EspressoMachine(UI) : virtual maintenance button pressed
+EspressoMachine(UI) -> EspressoMachineDrivers : start cleaning
+EspressoMachineDrivers -> MobileApp: start cleaning message
+MobileApp -> Service-rep: display cleaning message
+EspressoMachineDrivers -> MobileApp: cleaning performed
+MobileApp -> Service-rep: cleaning is done
+MobileApp  -> Service-rep: display Coffee Menu 
+Service-rep -> MobileApp: pressed virtual brew button for test coffee grind
+MobileApp -> EspressoMachineDrivers  : virtual brew button pressed
+EspressoMachineDrivers -> EspressoMachine(UI): brew button pressed
+EspressoMachine(UI)-> EspressoMachineDrivers: brewing
+EspressoMachineDrivers -> MobileApp: coffee is ready message
+MobileApp-> Service-rep: display a message "coffee is done"
+
+else status == invalid
+MobileApp ->Service-rep:failure message
+end
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,21 @@
+title Use Case 4: Place Order Payment (Software Sequence Diagram)
+Actor Customer
+
+Customer->UI: click "Pay Now" button
+UI->Order:getAmountDue()
+activate Order
+Order->Order: calculateTotal()
+Order-->UI: amountDue
+deactivate Order
+
+UI->Payment: << create >> Payment(paymentId, amount)
+activate Payment
+Payment-->UI: PaymentCreated
+
+UI->Payment: complete()
+alt Payment.status == "Approved"
+Payment-->UI: Payment Approved Message
+else Payment.status != "Approved"
+Payment-->UI:Display Error Try Again Message
+deactivate Payment
+end
